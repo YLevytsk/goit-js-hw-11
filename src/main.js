@@ -30,3 +30,41 @@ form.addEventListener("submit", async event => {
     });
   }
 });
+// Функция для отображения индикатора
+function showLoading() {
+  document.getElementById("loading-overlay").style.display = "flex";
+}
+
+// Функция для скрытия индикатора
+function hideLoading() {
+  document.getElementById("loading-overlay").style.display = "none";
+}
+
+// Пример обработчика формы поиска
+const form = document.querySelector('.search-form');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Показываем индикатор загрузки при отправке формы
+  showLoading();
+
+  const query = form.searchQuery.value;
+
+  // Пример HTTP запроса (замените URL на ваш серверный)
+  fetch(`https://api.example.com/search?q=${query}`)
+    .then(response => response.json())
+    .then(data => {
+      // Логика для обработки данных (например, отображение изображений)
+      const gallery = document.querySelector('.gallery');
+      gallery.innerHTML = ''; // Очищаем галерею
+      data.results.forEach(item => {
+        const img = document.createElement('img');
+        img.src = item.imageUrl; // Путь к изображению
+        gallery.appendChild(img);
+      });
+    })
+    .finally(() => {
+      // Скрываем индикатор загрузки после завершения запроса
+      hideLoading();
+    });
+});
