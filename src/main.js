@@ -43,30 +43,38 @@ function hideLoading() {
   loadingOverlay.classList.remove("show"); // Убираем класс для скрытия
 }
 
-// Пример обработчика формы поиска
-form.addEventListener('submit', function(event) {
+const form = document.querySelector(".search-form");
+
+form.addEventListener("submit", async function (event) {
   event.preventDefault();
+
+  // Получаем значение из поля ввода
+  const query = form.searchQuery.value.trim();
+
+  if (!query) {
+    iziToast.warning({
+      title: "Ошибка",
+      message: "Введите слово для поиска!",
+      position: "topRight",
+    });
+    return;
+  }
 
   // Показываем индикатор загрузки при отправке формы
   showLoading();
 
-  const query = form.searchQuery.value;
-
-  // Пример HTTP запроса (замените URL на ваш серверный)
-  fetch(`https://api.example.com/search?q=${query}`)
-    .then(response => response.json())
-    .then(data => {
-      // Логика для обработки данных (например, отображение изображений)
-      const gallery = document.querySelector('.gallery');
-      gallery.innerHTML = ''; // Очищаем галерею
-      data.results.forEach(item => {
-        const img = document.createElement('img');
-        img.src = item.imageUrl; // Путь к изображению
-        gallery.appendChild(img);
-      });
-    })
-    .finally(() => {
-      // Скрываем индикатор загрузки после завершения запроса
-      hideLoading();
+  try {
+    // Выполняем запрос на сервер для поиска изображений
+    const images = await fetchImages(query); // Эта функция должна быть вашей для запроса изображений
+    renderImages(images); // Отображаем изображения (реализуйте эту функцию для рендеринга)
+  } catch (error) {
+    iziToast.error({
+      title: "Ошибка",
+      message: "Не удалось загрузить изображения. Попробуйте ещё раз.",
+      position: "topRight",
     });
+  } finally {
+    // Скрываем индикатор загрузки после завершения запроса
+    hideLoading();
+  }
 });
