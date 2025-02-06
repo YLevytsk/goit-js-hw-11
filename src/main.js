@@ -30,6 +30,7 @@ form.addEventListener("submit", async event => {
     });
   }
 });
+
 // Функция для отображения индикатора
 function showLoading() {
   document.getElementById("loading-overlay").style.display = "flex";
@@ -40,8 +41,7 @@ function hideLoading() {
   document.getElementById("loading-overlay").style.display = "none";
 }
 
-// Пример обработчика формы поиска
-const form = document.querySelector('.search-form');
+// Используйте уже объявленную переменную form для второго обработчика
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
@@ -68,3 +68,4 @@ form.addEventListener('submit', function(event) {
       hideLoading();
     });
 });
+
