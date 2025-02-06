@@ -9,7 +9,6 @@
 @import url('./base.css');
 @import url('./container.css');
 
-
 /* Стили для оверлея */
 .loading-overlay {
   position: fixed;
@@ -42,5 +41,5 @@
 
 /* Стили для показывания оверлея */
 .show {
-  display: flex !important; /* Показываем индикатор */
+  display: flex; /* Показываем индикатор */
 }
