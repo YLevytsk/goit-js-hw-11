@@ -33,15 +33,17 @@ form.addEventListener("submit", async event => {
 
 // Функция для отображения индикатора
 function showLoading() {
-  document.getElementById("loading-overlay").style.display = "flex";
+  const loadingOverlay = document.getElementById("loading-overlay");
+  loadingOverlay.classList.add("show"); // Добавляем класс для отображения
 }
 
 // Функция для скрытия индикатора
 function hideLoading() {
-  document.getElementById("loading-overlay").style.display = "none";
+  const loadingOverlay = document.getElementById("loading-overlay");
+  loadingOverlay.classList.remove("show"); // Убираем класс для скрытия
 }
 
-// Используйте уже объявленную переменную form для второго обработчика
+// Пример обработчика формы поиска
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
@@ -68,4 +70,3 @@ form.addEventListener('submit', function(event) {
       hideLoading();
     });
 });
-
