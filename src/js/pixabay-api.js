@@ -5,35 +5,32 @@ const BASE_URL = 'https://pixabay.com/api/';
 
 export async function fetchImages(query) {
   try {
+    // Формируем URL для запроса
     const response = await axios.get(BASE_URL, {
       params: {
         key: API_KEY,
-        q: query,
-        image_type: 'photo',
-        orientation: 'horizontal',
-        safesearch: true,
+        q: query,  // Ищем по запросу
+        image_type: 'photo',  // Только фотографии
+        orientation: 'horizontal',  // Горизонтальные фотографии
+        safesearch: true  // Фильтр безопасности
       },
     });
 
-    console.log("API Response:", response); // Логирование ответа от API
+    console.log("API Response:", response);  // Логируем данные
 
-    // Проверка успешного ответа
-    if (response.status === 200) {
-      // Проверка наличия данных
-      if (response.data.hits.length === 0) {
-        console.warn('Изображения не найдены');
-        return [];
-      }
-      return response.data.hits;
+    // Проверяем, есть ли изображения
+    if (response.data.totalHits > 0) {
+      return response.data.hits;  // Возвращаем изображения
     } else {
-      console.error('Не удалось получить данные, статус:', response.status);
+      console.warn('No images found.');
       return [];
     }
   } catch (error) {
-    console.error('Ошибка при получении данных:', error);
+    console.error('Error fetching data:', error);
     return [];
   }
 }
+
 
 
 

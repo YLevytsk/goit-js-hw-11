@@ -1,4 +1,3 @@
-// main.js
 import { fetchImages } from './js/pixabay-api.js';
 import { renderImages } from './js/render-functions.js';
 import iziToast from 'izitoast';
@@ -9,11 +8,13 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.search-form');
 
+// Инициализация lightbox
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
 
+// Обработка формы поиска
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
@@ -38,6 +39,7 @@ form.addEventListener('submit', async (event) => {
     });
   }
 });
+
 
 
 
