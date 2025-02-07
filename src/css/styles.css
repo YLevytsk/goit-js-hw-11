@@ -49,11 +49,10 @@
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 24px;
 }
 
 .gallery img {
-  width: calc(33.333% - 16px);
-  margin-bottom: 16px;
+  width: calc((100% - 48px) / 3); /* 100% минус два отступа по 24px, делим на 3 */
   object-fit: cover;
 }
