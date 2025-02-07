@@ -29,33 +29,52 @@
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 0; /* Убираем закругление углов */
 }
 
 /* Стиль для информации о картинке */
 .image-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  padding: 10px;
-  text-align: center;
+  display: flex;
+  justify-content: space-between; /* Равномерно распределяет элементы по горизонтали */
+  gap: 28px; /* Отступы между блоками */
+  align-items: center;
+
 }
+.image-info .item {
+  display: flex;
+  flex-direction: column; /* Текст и количество идут в столбик */
+  justify-content: center; /* Центрирует элементы по вертикали */
+  align-items: center; /* Центрирует элементы по горизонтали */
+  width: 360px; /* Ширина прямоугольника */
+  height: 48px; /* Высота прямоугольника */
+  background-color: white; /* Белый фон */
+  border-bottom: 1px solid #808080; /* Нижняя граница */
+  border-left: 1px solid #808080; /* Левая граница */
+  border-right: 1px solid #808080; /* Правая граница */
+}
+
 /* Стили для формы поиска */
 .search-form {
   display: flex;
   justify-content: center; /* Выравнивание по горизонтали */
   margin-top: 36px; /* Отступ сверху */
 }
-.image-info p .label {
+.image-info .item .label {
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 12px;
   line-height: 133%;
   letter-spacing: 0.04em;
   color: #2e2f42;
-  margin-right: 8px; /* Отступ между меткой и числом */
 }
+.image-info .item .count {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 200%;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
 
 
