@@ -22,7 +22,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  
 }
 
 .gallery-item img {
@@ -46,7 +46,7 @@
 .search-form {
   display: flex;
   justify-content: center; /* Выравнивание по горизонтали */
-  margin-top: 20px; /* Отступ сверху */
+  margin-top: 36px; /* Отступ сверху */
 }
 
 
