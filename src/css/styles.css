@@ -48,5 +48,14 @@
   justify-content: center; /* Выравнивание по горизонтали */
   margin-top: 36px; /* Отступ сверху */
 }
+.image-info p .label {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 133%;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+  margin-right: 8px; /* Отступ между меткой и числом */
+}
 
 

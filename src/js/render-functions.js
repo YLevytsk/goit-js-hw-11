@@ -1,7 +1,9 @@
-// render-functions.js
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 export function renderImages(images) {
   const gallery = document.querySelector('.gallery');
-  gallery.innerHTML = ''; // Clear previous results
+  gallery.innerHTML = ''; // Очистить галерею перед добавлением новых изображений
 
   if (images.length === 0) {
     showErrorMessage();
@@ -12,14 +14,15 @@ export function renderImages(images) {
     .map(
       ({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => `
       <div class="gallery-item">
-        <a href="${largeImageURL}" target="_blank">
+        <!-- Обернули изображение в ссылку -->
+        <a href="${largeImageURL}">
           <img src="${webformatURL}" alt="${tags}" loading="lazy" />
         </a>
         <div class="image-info">
-          <p><span class="label">Likes</span><span class="count">${likes}</span></p>
-          <p><span class="label">Views</span><span class="count">${views}</span></p>
-          <p><span class="label">Comments</span><span class="count">${comments}</span></p>
-          <p><span class="label">Downloads</span><span class="count">${downloads}</span></p>
+          <p><span class="label">Likes</span>: <span class="count">${likes}</span></p>
+          <p><span class="label">Views</span>: <span class="count">${views}</span></p>
+          <p><span class="label">Comments</span>: <span class="count">${comments}</span></p>
+          <p><span class="label">Downloads</span>: <span class="count">${downloads}</span></p>
         </div>
       </div>
     `
@@ -27,6 +30,14 @@ export function renderImages(images) {
     .join('');
 
   gallery.innerHTML = markup;
+
+  // После добавления новых изображений в DOM вызываем refresh() для SimpleLightbox
+  const lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',  // Подписи под изображениями
+    captionDelay: 250,    // Задержка для отображения подписи
+  });
+
+  lightbox.refresh(); // Обновляем галерею для применения SimpleLightbox
 }
 
 export function showErrorMessage() {
