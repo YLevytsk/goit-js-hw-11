@@ -21,7 +21,7 @@
 .gallery-item {
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+ 
   
 }
 
@@ -29,7 +29,7 @@
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 0; /* Убираем закругление углов */
+  
 }
 
 /* Стиль для информации о картинке */
