@@ -15,6 +15,7 @@
   grid-template-columns: repeat(3, 1fr); /* 3 колонки */
   gap: 24px; /* Отступы по горизонтали и вертикали */
   margin-top: 24px;
+  padding: 32px 156px 0;
 }
 
 /* Стили для каждой карточки */
@@ -35,9 +36,11 @@
 /* Стиль для информации о картинке */
 .image-info {
   display: flex;
-  justify-content: space-between; /* Равномерно распределяет элементы по горизонтали */
+  justify-content: space-between;
   gap: 28px; /* Отступы между блоками */
   align-items: center;
+  padding-left: 20px; /* Отступ слева для всего блока */
+ 
 
 }
 .image-info .item {
