@@ -15,7 +15,18 @@ export async function fetchImages(query) {
       },
     });
 
-    return response.data.hits;
+    // Проверка успешного ответа
+    if (response.status === 200) {
+      // Проверка наличия данных
+      if (response.data.hits.length === 0) {
+        console.warn('Изображения не найдены');
+        return [];
+      }
+      return response.data.hits;
+    } else {
+      console.error('Не удалось получить данные, статус:', response.status);
+      return [];
+    }
   } catch (error) {
     console.error('Ошибка при получении данных:', error);
     return [];
