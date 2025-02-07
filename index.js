@@ -1,18 +1,18 @@
-import{a as m,S as p,i as a}from"./assets/vendor-koyFXKdT.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const o of e)if(o.type==="childList")for(const s of o.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&i(s)}).observe(document,{childList:!0,subtree:!0});function n(e){const o={};return e.integrity&&(o.integrity=e.integrity),e.referrerPolicy&&(o.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?o.credentials="include":e.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function i(e){if(e.ep)return;e.ep=!0;const o=n(e);fetch(e.href,o)}})();const f="48661000-87492d5612d6e41eb1a42ef3d",y="https://pixabay.com/api/";async function l(r){try{return(await m.get(y,{params:{key:f,q:r,image_type:"photo",orientation:"horizontal",safesearch:!0}})).data.hits}catch(t){return console.error("Ошибка при получении данных:",t),[]}}const c=document.querySelector(".gallery"),h=document.querySelector(".search-form"),v=new p(".gallery a",{captionsData:"alt",captionDelay:250});h.addEventListener("submit",async r=>{r.preventDefault();const t=r.target.elements.searchQuery.value.trim();if(!t){a.warning({title:"Ошибка",message:"Введите слово для поиска!",position:"topRight"});return}try{const n=await l(t);g(n)}catch{a.error({title:"Ошибка",message:"Не удалось загрузить изображения. Попробуйте ещё раз.",position:"topRight"})}});function g(r){if(c.innerHTML="",r.length===0){L();return}const t=r.map(({webformatURL:n,largeImageURL:i,tags:e,likes:o,views:s,comments:u,downloads:d})=>`
+import{a as u,S as f,i as c}from"./assets/vendor-koyFXKdT.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const n of r.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function s(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(e){if(e.ep)return;e.ep=!0;const r=s(e);fetch(e.href,r)}})();const g="48661000-87492d5612d6e41eb1a42ef3d",d="https://pixabay.com/api/";async function m(o){try{return(await u.get(d,{params:{key:g,q:o,image_type:"photo",orientation:"horizontal",safesearch:!0}})).data.hits}catch(t){return console.error("Ошибка при получении данных:",t),[]}}const a=document.querySelector(".gallery"),y=document.querySelector(".search-form"),h=new f(".gallery a",{captionsData:"alt",captionDelay:250});y.addEventListener("submit",async o=>{o.preventDefault();const t=o.target.elements.searchQuery.value.trim();if(!t){c.warning({title:"Ошибка",message:"Введите слово для поиска!",position:"topRight"});return}try{const s=await m(t);L(s)}catch{c.error({title:"Ошибка",message:"Не удалось загрузить изображения. Попробуйте ещё раз.",position:"topRight"})}});function L(o){if(a.innerHTML="",o.length===0){b();return}const t=o.map(({webformatURL:s,largeImageURL:i,tags:e,likes:r,views:n,comments:l,downloads:p})=>`
       <div class="gallery-item">
         <a href="${i}" target="_blank">
-          <img src="${n}" alt="${e}" loading="lazy" />
+          <img src="${s}" alt="${e}" loading="lazy" />
         </a>
         <div class="image-info">
-          <p><strong>❤️ ${o}</strong></p>
-          <p><strong>👁️ ${s}</strong></p>
-          <p><strong>💬 ${u}</strong></p>
-          <p><strong>⬇️ ${d}</strong></p>
+          <p><strong>❤️ ${r}</strong></p>
+          <p><strong>👁️ ${n}</strong></p>
+          <p><strong>💬 ${l}</strong></p>
+          <p><strong>⬇️ ${p}</strong></p>
         </div>
       </div>
-    `).join("");c.innerHTML=t,v.refresh()}function L(){c.innerHTML=`
+    `).join("");a.innerHTML=t,h.refresh()}function b(){a.innerHTML=`
     <p class="error-message">
       Sorry, нет изображений, соответствующих вашему запросу. Пожалуйста, попробуйте снова!
     </p>
-  `}function w(){document.getElementById("loading-overlay").classList.add("show")}function b(){document.getElementById("loading-overlay").classList.remove("show")}const O=document.querySelector(".search-form");O.addEventListener("submit",async r=>{r.preventDefault();const t=r.target.elements.searchQuery.value.trim();if(!t){a.warning({title:"Ошибка",message:"Введите слово для поиска!",position:"topRight"});return}w();try{const n=await l(t);g(n)}catch{a.error({title:"Ошибка",message:"Не удалось загрузить изображения. Попробуйте ещё раз.",position:"topRight"})}finally{b()}});
+  `}
 //# sourceMappingURL=index.js.map
