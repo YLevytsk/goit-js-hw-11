@@ -5,10 +5,10 @@ import{a as f,S as l,i}from"./assets/vendor-CtnHdr7b.js";(function(){const t=doc
           <img src="${e}" alt="${o}" loading="lazy" />
         </a>
         <div class="image-info">
-          <p><span class="label">Likes</span>: <span class="count">${u}</span></p>
-          <p><span class="label">Views</span>: <span class="count">${d}</span></p>
-          <p><span class="label">Comments</span>: <span class="count">${g}</span></p>
-          <p><span class="label">Downloads</span>: <span class="count">${m}</span></p>
+          <p><span class="label">Likes</span> <span class="count">${u}</span></p>
+          <p><span class="label">Views</span> <span class="count">${d}</span></p>
+          <p><span class="label">Comments</span> <span class="count">${g}</span></p>
+          <p><span class="label">Downloads</span> <span class="count">${m}</span></p>
         </div>
       </div>
     `).join("");t.innerHTML=s,new l(".gallery a",{captionsData:"alt",captionDelay:250}).refresh()}function b(){const r=document.querySelector(".gallery");r.innerHTML=`
