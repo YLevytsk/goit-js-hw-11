@@ -1,28 +1,25 @@
 import axios from 'axios';
 
-const API_KEY = '48661000-87492d5612d6e41eb1a42ef3d';  // Ваш уникальный API ключ
+const API_KEY = '48661000-87492d5612d6e41eb1a42ef3d';
 const BASE_URL = 'https://pixabay.com/api/';
 
-/**
- * Функция для выполнения HTTP-запроса к API Pixabay
- * @param {string} query - поисковый запрос
- * @returns {Promise<Array>} - массив найденных изображений
- */
 export async function fetchImages(query) {
   try {
     const response = await axios.get(BASE_URL, {
       params: {
-        key: API_KEY,           // Уникальный ключ
-        q: query,               // Поисковый запрос
-        image_type: 'photo',    // Фильтруем только фото
-        orientation: 'horizontal', // Горизонтальная ориентация
-        safesearch: true,       // Включаем безопасный поиск
+        key: API_KEY,
+        q: query,
+        image_type: 'photo',
+        orientation: 'horizontal',
+        safesearch: true,
       },
     });
 
-    // Проверка на успешный ответ
+    console.log("API Response:", response); // Логирование ответа от API
+
+    // Проверка успешного ответа
     if (response.status === 200) {
-      // Проверяем, есть ли изображения в ответе
+      // Проверка наличия данных
       if (response.data.hits.length === 0) {
         console.warn('Изображения не найдены');
         return [];
@@ -37,5 +34,6 @@ export async function fetchImages(query) {
     return [];
   }
 }
+
 
 
