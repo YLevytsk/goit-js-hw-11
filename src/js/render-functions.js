@@ -29,6 +29,13 @@ form.addEventListener("submit", async event => {
 
   try {
     const images = await fetchImages(query);
+
+    // Проверка на отсутствие изображений
+    if (images.length === 0) {
+      showErrorMessage("Извините, изображений не найдено по вашему запросу.");
+      return;
+    }
+
     renderImages(images);
   } catch (error) {
     iziToast.error({
@@ -41,11 +48,6 @@ form.addEventListener("submit", async event => {
 
 export function renderImages(images) {
   gallery.innerHTML = ""; // Очищаем предыдущий поиск
-
-  if (images.length === 0) {
-    showErrorMessage();
-    return;
-  }
 
   const markup = images
     .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => `
@@ -67,10 +69,8 @@ export function renderImages(images) {
   lightbox.refresh(); // Обновляем SimpleLightbox после добавления новых изображений
 }
 
-export function showErrorMessage() {
+export function showErrorMessage(message) {
   gallery.innerHTML = `
-    <p class="error-message">
-      Sorry, нет изображений, соответствующих вашему запросу. Пожалуйста, попробуйте снова!
-    </p>
+    <p class="error-message">${message || "Что-то пошло не так. Пожалуйста, попробуйте снова!"}</p>
   `;
 }
