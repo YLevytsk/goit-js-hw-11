@@ -9,5 +9,38 @@
 @import url('./base.css');
 @import url('./container.css');
 
+/* Стили для галереи */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+  gap: 24px; /* Отступы по горизонтали и вертикали */
+  margin-top: 24px;
+}
+
+/* Стили для каждой карточки */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Стиль для информации о картинке */
+.image-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
 
 
