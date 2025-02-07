@@ -16,10 +16,10 @@ export function renderImages(images) {
           <img src="${webformatURL}" alt="${tags}" loading="lazy" />
         </a>
         <div class="image-info">
-          <p><strong>❤️ ${likes}</strong></p>
-          <p><strong>👁️ ${views}</strong></p>
-          <p><strong>💬 ${comments}</strong></p>
-          <p><strong>⬇️ ${downloads}</strong></p>
+          <p><span class="label">Likes</span><span class="count">${likes}</span></p>
+          <p><span class="label">Views</span><span class="count">${views}</span></p>
+          <p><span class="label">Comments</span><span class="count">${comments}</span></p>
+          <p><span class="label">Downloads</span><span class="count">${downloads}</span></p>
         </div>
       </div>
     `
