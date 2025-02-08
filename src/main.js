@@ -26,16 +26,55 @@ function hideLoader() {
 // Массив случайных тем
 const defaultQueries = ['nature', 'technology', 'art', 'food', 'travel', 'sports', 'animals', 'architecture', 'people', 'music'];
 
-// Функция для выбора случайной темы
-function getRandomQuery() {
-  return defaultQueries[Math.floor(Math.random() * defaultQueries.length)];
-}
-
 // Функция загрузки случайных изображений
 async function loadDefaultImages() {
   const randomQuery = defaultQueries.sort(() => 0.5 - Math.random()).join(',');
   try {
     showLoader(); // Показываем лоадер перед загрузкой
-    const randomQuery = defaultQueries.join(','); // Выбираем случайную тему
-    const images = await fetchImages(randomQuery);
+    const images = await fetchImages(randomQuery); // Загружаем изображения по случайному запросу
+    renderImages(images);
+  } catch (error) {
+    iziToast.error({
+      title: 'Error',
+      message: 'Failed to load images. Please try again.',
+      position: 'topRight',
+    });
+  } finally {
+    hideLoader(); // Скрываем лоадер после загрузки
+  }
+}
+
+// Загружаем случайные изображения при загрузке страницы
+loadDefaultImages();
+
+// Загрузка изображений по запросу пользователя
+form.addEventListener('submit', async (event) => {
+  showLoader(); // Показываем лоадер при нажатии на кнопку поиска
+  event.preventDefault();
+
+  const query = event.target.elements.searchQuery.value.trim();
+  if (!query) {
+    iziToast.warning({
+      title: 'Error',
+      message: 'Please enter a search term!',
+      position: 'topRight',
+    });
+    return;
+  }
+
+  showLoader(); // Показываем лоадер перед запросом
+
+  try {
+    const images = await fetchImages(query);
+    renderImages(images);
+  } catch (error) {
+    iziToast.error({
+      title: 'Error',
+      message: 'Failed to load images. Please try again.',
+      position: 'topRight',
+    });
+  } finally {
+    hideLoader(); // Скрываем лоадер после загрузки
+  }
+});
 
