@@ -13,6 +13,16 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 
+// Функция для показа лоадера
+function showLoader() {
+  document.getElementById('loading-overlay').style.display = 'flex';
+}
+
+// Функция для скрытия лоадера
+function hideLoader() {
+  document.getElementById('loading-overlay').style.display = 'none';
+}
+
 // Массив случайных тем
 const defaultQueries = ['nature', 'technology', 'art', 'food', 'travel', 'sports', 'animals', 'architecture', 'people', 'music'];
 
@@ -24,24 +34,28 @@ function getRandomQuery() {
 // Функция загрузки случайных изображений
 async function loadDefaultImages() {
   try {
+    showLoader(); // Показываем лоадер перед загрузкой
     const randomQuery = getRandomQuery(); // Выбираем случайную тему
     const images = await fetchImages(randomQuery); // Загружаем изображения по случайному запросу
     renderImages(images);
+    hideLoader(); // Скрываем лоадер после вывода галереи
   } catch (error) {
     iziToast.error({
       title: 'Error',
       message: 'Failed to load images. Please try again.',
       position: 'topRight',
     });
+  } finally {
+    hideLoader(); // Скрываем лоадер после загрузки
   }
 }
 
 // Загружаем случайные изображения при загрузке страницы
 loadDefaultImages();
 
-
 // Загрузка изображений по запросу пользователя
 form.addEventListener('submit', async (event) => {
+  showLoader(); // Показываем лоадер при нажатии на кнопку поиска
   event.preventDefault();
 
   const query = event.target.elements.searchQuery.value.trim();
@@ -54,6 +68,8 @@ form.addEventListener('submit', async (event) => {
     return;
   }
 
+  showLoader(); // Показываем лоадер перед запросом
+
   try {
     const images = await fetchImages(query);
     renderImages(images);
@@ -63,14 +79,7 @@ form.addEventListener('submit', async (event) => {
       message: 'Failed to load images. Please try again.',
       position: 'topRight',
     });
+  } finally {
+    hideLoader(); // Скрываем лоадер после загрузки
   }
 });
-
-// Вызываем функцию для загрузки изображений по умолчанию при запуске страницы
-loadDefaultImages();
-
-
-
-
-
-
