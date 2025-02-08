@@ -23,13 +23,13 @@
   border: 1px solid #808080;
   background-color: white;
   width: 100%;
+  height: auto;
 }
 
 /* Одинаковый размер изображений */
 .gallery-item img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 
@@ -51,7 +51,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: auto;
 }
 
 .image-info .label {
@@ -119,6 +118,8 @@
 
 .search-form button:hover {
   background-color: #3b63c7;
+}
+
 }
 /* Лоадер Spin из репозитория css-loader */
 .loading-overlay {
