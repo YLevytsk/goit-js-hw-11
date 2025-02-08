@@ -6,7 +6,7 @@ const API_KEY = '48661000-87492d5612d6e41eb1a42ef3d';
 const BASE_URL = 'https://pixabay.com/api/';
 
 export async function fetchImages(query) {
-  // Проверка на пустой запрос
+  
   if (!query || query.trim() === '') {
     iziToast.warning({
       title: 'Warning',
