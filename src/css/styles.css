@@ -3,16 +3,16 @@
 @import url('./base.css');
 @import url('./container.css');
 
-/* Стили для галереи */
+
 .gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 колонки */
-  gap: 24px; /* Отступы по горизонтали и вертикали */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 24px; 
   margin-top: 24px;
   padding: 32px 156px 0;
 }
 
-/* Стили для каждой карточки */
+
 .gallery-item {
   display: flex;
   flex-direction: column;
@@ -27,7 +27,7 @@
  
 }
 
-/* Одинаковый размер изображений */
+
 .gallery-item img {
   width:360px;
   height: 200px;
@@ -35,7 +35,7 @@
   display: block;
 }
 
-/* Стиль для информации о картинке */
+
 .image-info {
   display: flex;
   gap: auto;
@@ -76,7 +76,7 @@
   color: #2e2f42;
 }
 
-/* Стили для формы поиска */
+
 .search-form {
   display: flex;
   justify-content: center;
@@ -124,9 +124,9 @@
 .search-form button:hover {
   background-color: #3b63c7;
 }
-/* Лоадер из репозитория */
+
 .loading-overlay {
-  display: none; /* По умолчанию скрыто */
+  display: none; 
   position: fixed;
   top: 0;
   left: 0;

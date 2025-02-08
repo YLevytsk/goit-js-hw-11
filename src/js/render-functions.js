@@ -9,7 +9,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
 });
 
 export function renderImages(images) {
-  gallery.innerHTML = ''; // Очистка галереи перед добавлением новых изображений
+  gallery.innerHTML = ''; 
 
   if (images.length === 0) {
     showErrorMessage();
@@ -45,7 +45,7 @@ export function renderImages(images) {
 
   gallery.innerHTML = markup;
 
-  lightbox.refresh(); // Обновляем lightbox после вставки изображений
+  lightbox.refresh(); 
 }
 
 export function showErrorMessage() {

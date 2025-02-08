@@ -6,33 +6,33 @@ import 'izitoast/dist/css/iziToast.min.css';
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.search-form');
 
-// Функция для показа лоадера
+
 function showLoader() {
   document.getElementById('loading-overlay').style.display = 'flex';
 }
 
-// Функция для скрытия лоадера
+
 function hideLoader() {
   document.getElementById('loading-overlay').style.display = 'none';
 }
 
-// Обработчик отправки формы
+
 form.addEventListener('submit', async event => {
   event.preventDefault();
 
   const query = event.target.elements.searchQuery.value.trim();
 
-  // Проверка на пустой запрос
+  
   if (!query || query.trim() === '') {
     iziToast.warning({
       title: 'Warning',
       message: 'Please enter a search term!',
       position: 'topRight',
     });
-    return; // Останавливаем выполнение, если запрос пустой
+    return; 
   }
 
-  showLoader(); // Показываем лоадер только если запрос не пустой
+  showLoader(); 
 
   try {
     const images = await fetchImages(query);
@@ -44,7 +44,7 @@ form.addEventListener('submit', async event => {
       position: 'topRight',
     });
   } finally {
-    hideLoader(); // Скрываем лоадер после завершения запроса
+    hideLoader(); 
   }
 });
 
