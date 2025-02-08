@@ -34,9 +34,8 @@ function getRandomSubarray(arr, size) {
 
 // Функция загрузки случайных изображений
 async function loadDefaultImages() {
-  // Выбираем случайное количество категорий (например, от 2 до 5)
-  const randomSize = Math.floor(Math.random() * (5 - 2 + 1)) + 2;
-  const randomQueries = getRandomSubarray(defaultQueries, randomSize).join(',');
+  // Выбираем 5 случайных категорий
+  const randomQueries = getRandomSubarray(defaultQueries, 5).join(',');
 
   try {
     showLoader(); // Показываем лоадер перед загрузкой
