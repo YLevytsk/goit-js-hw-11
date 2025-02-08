@@ -38,10 +38,9 @@
 /* Стиль для информации о картинке */
 .image-info {
   display: flex;
-  justify-content: space-between;
+  gap: auto;
   align-items: center;
-  gap: 12px;
-  padding: 8px 20px;
+  
   width: 360px;
   height: 48px;
   background-color: white;
@@ -54,8 +53,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
- 
   flex: 1;
+  height: 40px;
+  width: auto;
 }
 
 .image-info .label {

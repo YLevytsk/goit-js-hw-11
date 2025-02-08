@@ -13,19 +13,32 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 
-// Загрузка изображений по умолчанию (например, "cats")
+// Массив случайных тем
+const defaultQueries = ['nature', 'technology', 'art', 'food', 'travel', 'sports', 'animals', 'architecture', 'people', 'music'];
+
+// Функция для выбора случайной темы
+function getRandomQuery() {
+  return defaultQueries[Math.floor(Math.random() * defaultQueries.length)];
+}
+
+// Функция загрузки случайных изображений
 async function loadDefaultImages() {
   try {
-    const images = await fetchImages('cats'); // Загружаем изображения по умолчанию
+    const randomQuery = getRandomQuery(); // Выбираем случайную тему
+    const images = await fetchImages(randomQuery); // Загружаем изображения по случайному запросу
     renderImages(images);
   } catch (error) {
     iziToast.error({
       title: 'Error',
-      message: 'Failed to load default images. Please try again.',
+      message: 'Failed to load images. Please try again.',
       position: 'topRight',
     });
   }
 }
+
+// Загружаем случайные изображения при загрузке страницы
+loadDefaultImages();
+
 
 // Загрузка изображений по запросу пользователя
 form.addEventListener('submit', async (event) => {

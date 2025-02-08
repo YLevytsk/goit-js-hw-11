@@ -17,18 +17,31 @@ export function renderImages(images) {
   }
 
   const markup = images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => `
-    <div class="gallery-item">
-      <a href="${largeImageURL}">
-        <img src="${webformatURL}" alt="${tags}" loading="lazy" />
-      </a>
-      <div class="image-info">
-        <p><span class="label">Likes</span> <span class="count">${likes}</span></p>
-        <p><span class="label">Views</span> <span class="count">${views}</span></p>
-        <p><span class="label">Comments</span> <span class="count">${comments}</span></p>
-        <p><span class="label">Downloads</span> <span class="count">${downloads}</span></p>
+  <div class="gallery-item">
+    <a href="${largeImageURL}">
+      <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+    </a>
+    <div class="image-info">
+      <div class="item">
+        <span class="label">Likes</span>
+        <span class="count">${likes}</span>
+      </div>
+      <div class="item">
+        <span class="label">Views</span>
+        <span class="count">${views}</span>
+      </div>
+      <div class="item">
+        <span class="label">Comments</span>
+        <span class="count">${comments}</span>
+      </div>
+      <div class="item">
+        <span class="label">Downloads</span>
+        <span class="count">${downloads}</span>
       </div>
     </div>
-  `).join('');
+  </div>
+`).join('');
+
 
   gallery.innerHTML = markup;
 
