@@ -4,21 +4,19 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import './js/loader.js'; // Подключаем лоадер
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.search-form');
-const loadingOverlay = document.getElementById('loading-overlay');
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
 
+// Загрузка изображений по умолчанию (например, "cats")
 async function loadDefaultImages() {
   try {
-    showLoader();
-    const images = await fetchImages('cats');
+    const images = await fetchImages('cats'); // Загружаем изображения по умолчанию
     renderImages(images);
   } catch (error) {
     iziToast.error({
@@ -26,18 +24,17 @@ async function loadDefaultImages() {
       message: 'Failed to load default images. Please try again.',
       position: 'topRight',
     });
-  } finally {
-    hideLoader();
   }
 }
 
+// Загрузка изображений по запросу пользователя
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
-  
+
   const query = event.target.elements.searchQuery.value.trim();
   if (!query) {
     iziToast.warning({
-      title: 'Warning',
+      title: 'Error',
       message: 'Please enter a search term!',
       position: 'topRight',
     });
@@ -45,8 +42,6 @@ form.addEventListener('submit', async (event) => {
   }
 
   try {
-    showLoader();
-    gallery.innerHTML = ''; // Очистка перед новым запросом
     const images = await fetchImages(query);
     renderImages(images);
   } catch (error) {
@@ -55,20 +50,12 @@ form.addEventListener('submit', async (event) => {
       message: 'Failed to load images. Please try again.',
       position: 'topRight',
     });
-  } finally {
-    hideLoader();
   }
 });
 
-function showLoader() {
-  loadingOverlay.style.display = 'flex';
-}
-
-function hideLoader() {
-  loadingOverlay.style.display = 'none';
-}
-
+// Вызываем функцию для загрузки изображений по умолчанию при запуске страницы
 loadDefaultImages();
+
 
 
 
