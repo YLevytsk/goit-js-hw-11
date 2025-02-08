@@ -26,12 +26,21 @@ function hideLoader() {
 // Массив случайных тем
 const defaultQueries = ['nature', 'technology', 'art', 'food', 'travel', 'sports', 'animals', 'architecture', 'people', 'music'];
 
+// Функция для получения случайного подмассива из массива
+function getRandomSubarray(arr, size) {
+  const shuffled = arr.slice().sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, size);
+}
+
 // Функция загрузки случайных изображений
 async function loadDefaultImages() {
-  const randomQuery = defaultQueries.sort(() => 0.5 - Math.random()).join(',');
+  // Выбираем случайное количество категорий (например, от 2 до 5)
+  const randomSize = Math.floor(Math.random() * (5 - 2 + 1)) + 2;
+  const randomQueries = getRandomSubarray(defaultQueries, randomSize).join(',');
+
   try {
     showLoader(); // Показываем лоадер перед загрузкой
-    const images = await fetchImages(randomQuery); // Загружаем изображения по случайному запросу
+    const images = await fetchImages(randomQueries); // Загружаем изображения по случайному запросу
     renderImages(images);
   } catch (error) {
     iziToast.error({
